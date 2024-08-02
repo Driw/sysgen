@@ -11,21 +11,21 @@
 
 	<properties>
 		<!-- MAVEN -->
-		<maven.compiler.source>16</maven.compiler.source>
-		<maven.compiler.target>16</maven.compiler.target>
-		<maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.surefire.plugin.version>3.3.1</maven.surefire.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- LANGUAGE -->
-		<java.version>16</java.version>
-		<kotlin.version>1.6.21</kotlin.version>
+		<java.version>17</java.version>
+		<kotlin.version>1.9.20</kotlin.version>
 		<!-- OTHERS -->
-		<jackson.version>2.13.1</jackson.version>
-		<slf4j.version>2.0.0-alpha6</slf4j.version>
+		<jackson.version>2.17.2</jackson.version>
+		<slf4j.version>2.0.13</slf4j.version>
 		<sysgine.version>0.1.0</sysgine.version>
 		<!-- TESTS -->
-		<junit.jupiter.version>5.8.2</junit.jupiter.version>
-		<kotest.version>5.3.0</kotest.version>
-		<jacoco.version>0.8.8</jacoco.version>
+		<junit.jupiter.version>5.10.3</junit.jupiter.version>
+		<kotest.version>5.9.1</kotest.version>
+		<jacoco.version>0.8.12</jacoco.version>
 	</properties>
 
 	<name>Sysgine Framework</name>
@@ -54,7 +54,7 @@
 
 			<dependency>
 				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-stdlib-jdk8</artifactId>
+				<artifactId>kotlin-stdlib</artifactId>
 				<version>${kotlin.version}</version>
 			</dependency>
 			<dependency>
@@ -88,7 +88,7 @@
 		<dependency>
 			<groupId>io.gitlab.arturbosch.detekt</groupId>
 			<artifactId>detekt-formatting</artifactId>
-			<version>1.20.0</version>
+			<version>1.23.6</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -127,6 +127,37 @@
 					<groupId>org.jetbrains.kotlin</groupId>
 					<artifactId>kotlin-maven-plugin</artifactId>
 					<version>${kotlin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.13.0</version>
+					<configuration>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+					</configuration>
+				</plugin>
+
+				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.3.1</version>
+					<configuration>
+						<systemPropertyVariables>
+							<kotest.framework.classpath.scanning.autoscan.disable>true</kotest.framework.classpath.scanning.autoscan.disable>
+						</systemPropertyVariables>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
