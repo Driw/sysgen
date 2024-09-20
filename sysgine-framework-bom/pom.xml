@@ -16,7 +16,7 @@
 		<kotest.version>5.9.1</kotest.version>
 		<!-- Dependencies -->
 		<detekt.version>1.23.6</detekt.version>
-		<mockk.verion>1.23.6</mockk.verion>
+		<mockk.verion>1.13.12</mockk.verion>
 		<easy-random.version>5.0.0</easy-random.version>
 		<!-- Test -->
 		<junit.jupiter.version>5.10.3</junit.jupiter.version>
