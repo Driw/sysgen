@@ -10,21 +10,15 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<!-- MAVEN -->
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<!-- Maven -->
 		<maven.surefire.plugin.version>3.3.1</maven.surefire.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- LANGUAGE -->
-		<java.version>17</java.version>
-		<kotlin.version>1.9.20</kotlin.version>
-		<!-- OTHERS -->
-		<jackson.version>2.17.2</jackson.version>
-		<slf4j.version>2.0.13</slf4j.version>
+		<!-- Project -->
 		<sysgine.version>0.1.0</sysgine.version>
-		<!-- TESTS -->
-		<junit.jupiter.version>5.10.3</junit.jupiter.version>
+		<java.version>21</java.version>
+		<kotlin.version>1.9.20</kotlin.version>
 		<kotest.version>5.9.1</kotest.version>
+		<!-- Test -->
 		<jacoco.version>0.8.12</jacoco.version>
 	</properties>
 
@@ -50,114 +44,182 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- KOTLIN -->
-
 			<dependency>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-stdlib</artifactId>
-				<version>${kotlin.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-reflect</artifactId>
-				<version>${kotlin.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<artifactId>kotlin-test</artifactId>
-				<version>${kotlin.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<!-- TESTS -->
-
-			<!-- https://mvnrepository.com/artifact/io.mockk/mockk -->
-			<dependency>
-				<groupId>io.mockk</groupId>
-				<artifactId>mockk</artifactId>
-				<version>1.12.2</version>
-				<scope>test</scope>
+				<groupId>br.com.driw.sysgine</groupId>
+				<artifactId>sysgine-framework-bom</artifactId>
+				<version>${sysgine.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
-		<!-- QUALITY -->
+		<!-- Kotlin -->
+
+		<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib -->
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-stdlib</artifactId>
+			<version>${kotlin.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect -->
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-reflect</artifactId>
+			<version>${kotlin.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-test -->
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-test</artifactId>
+			<version>${kotlin.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Quality -->
 
 		<!-- https://mvnrepository.com/artifact/io.gitlab.arturbosch.detekt/detekt-formatting -->
 		<dependency>
 			<groupId>io.gitlab.arturbosch.detekt</groupId>
 			<artifactId>detekt-formatting</artifactId>
-			<version>1.23.6</version>
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- TEST DEPENDENCIES -->
+		<!-- Test -->
 
+		<!-- https://mvnrepository.com/artifact/io.mockk/mockk -->
+		<dependency>
+			<groupId>io.mockk</groupId>
+			<artifactId>mockk</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.kotest/kotest-assertions-core-jvm -->
 		<dependency>
 			<groupId>io.kotest</groupId>
 			<artifactId>kotest-assertions-core-jvm</artifactId>
-			<version>${kotest.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.kotest/kotest-runner-junit5-jvm -->
 		<dependency>
 			<groupId>io.kotest</groupId>
 			<artifactId>kotest-runner-junit5-jvm</artifactId>
-			<version>${kotest.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Dependency Compatibility - mockk java21 -->
+
+		<!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+		<dependency>
+			<groupId>net.bytebuddy</groupId>
+			<artifactId>byte-buddy</artifactId>
+			<version>1.15.1</version>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<!-- PLUGIN MANAGEMENT -->
-
 		<pluginManagement>
 			<plugins>
-				<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-maven-plugin -->
-				<plugin>
-					<groupId>org.jetbrains.kotlin</groupId>
-					<artifactId>kotlin-maven-plugin</artifactId>
-					<version>${kotlin.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>compile</goal>
-								<goal>test-compile</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-
 				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.13.0</version>
 					<configuration>
-						<source>${maven.compiler.source}</source>
-						<target>${maven.compiler.target}</target>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<compilerArgs>
+							<arg>-Dnet.bytebuddy.experimental=true</arg>
+						</compilerArgs>
 					</configuration>
 				</plugin>
-
+				<!-- https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-maven-plugin -->
+				<plugin>
+					<groupId>org.jetbrains.kotlin</groupId>
+					<artifactId>kotlin-maven-plugin</artifactId>
+					<version>${kotlin.version}</version>
+					<configuration>
+						<jvmTarget>${java.version}</jvmTarget>
+					</configuration>
+					<executions>
+						<execution>
+							<id>compile</id>
+							<phase>compile</phase>
+							<goals>
+								<goal>compile</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>test-compile</id>
+							<phase>test-compile</phase>
+							<goals>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 				<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.3.1</version>
+					<version>${maven.surefire.plugin.version}</version>
 					<configuration>
 						<systemPropertyVariables>
 							<kotest.framework.classpath.scanning.autoscan.disable>true</kotest.framework.classpath.scanning.autoscan.disable>
 						</systemPropertyVariables>
 					</configuration>
+				</plugin>
+				<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
+					<configuration>
+						<destFile>target/jacoco.exec</destFile>
+						<dataFile>target/jacoco.exec</dataFile>
+						<output>file</output>
+						<append>true</append>
+					</configuration>
+					<executions>
+						<execution>
+							<id>jacoco-initialize</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<phase>test-compile</phase>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>jacoco-site</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>post-unit-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+							<configuration>
+								<dataFile>target/jacoco.exec</dataFile>
+								<outputDirectory>target/jacoco-ut</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
