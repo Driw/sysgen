@@ -14,6 +14,10 @@
 		<sysgine.version>0.1.0</sysgine.version>
 		<kotlin.version>1.9.20</kotlin.version>
 		<kotest.version>5.9.1</kotest.version>
+		<!-- Dependencies -->
+		<detekt.version>1.23.6</detekt.version>
+		<mockk.verion>1.23.6</mockk.verion>
+		<easy-random.version>5.0.0</easy-random.version>
 		<!-- Test -->
 		<junit.jupiter.version>5.10.3</junit.jupiter.version>
 	</properties>
@@ -65,7 +69,7 @@
 			<dependency>
 				<groupId>io.gitlab.arturbosch.detekt</groupId>
 				<artifactId>detekt-formatting</artifactId>
-				<version>1.23.6</version>
+				<version>${detekt.version}</version>
 			</dependency>
 
 			<!-- Test -->
@@ -74,7 +78,7 @@
 			<dependency>
 				<groupId>io.mockk</groupId>
 				<artifactId>mockk</artifactId>
-				<version>1.13.12</version>
+				<version>${mockk.verion}</version>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
 			<dependency>
@@ -98,7 +102,7 @@
 			<dependency>
 				<groupId>org.jeasy</groupId>
 				<artifactId>easy-random-core</artifactId>
-				<version>5.0.0</version>
+				<version>${easy-random.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
