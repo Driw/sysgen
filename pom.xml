@@ -10,12 +10,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<!-- Maven -->
-		<maven.surefire.plugin.version>3.3.1</maven.surefire.plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Project -->
-		<sysgine.version>0.1.0</sysgine.version>
 		<java.version>21</java.version>
+		<sysgine.version>0.1.0</sysgine.version>
 		<kotlin.version>1.9.20</kotlin.version>
 		<kotest.version>5.9.1</kotest.version>
 		<!-- Test -->
@@ -168,7 +166,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>${maven.surefire.plugin.version}</version>
+					<version>3.5.0</version>
 					<configuration>
 						<systemPropertyVariables>
 							<kotest.framework.classpath.scanning.autoscan.disable>true</kotest.framework.classpath.scanning.autoscan.disable>
