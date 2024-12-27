@@ -13,18 +13,6 @@
 	<artifactId>sysgine-framework-reflection</artifactId>
 	<version>0.1.0</version>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>br.com.driw.sysgine</groupId>
-				<artifactId>sysgine-framework-bom</artifactId>
-				<version>${sysgine.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<!-- Kotlin -->
 
@@ -50,11 +38,13 @@
 		<dependency>
 			<groupId>br.com.driw.sysgine</groupId>
 			<artifactId>sysgine-framework-common</artifactId>
+			<version>${sysgine.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>br.com.driw.sysgine</groupId>
 			<artifactId>sysgine-framework-test</artifactId>
 			<scope>test</scope>
+			<version>${sysgine.version}</version>
 		</dependency>
 
 		<!-- Utils -->

@@ -13,18 +13,6 @@
 	<artifactId>sysgine-framework-test</artifactId>
 	<version>0.1.0</version>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>br.com.driw.sysgine</groupId>
-				<artifactId>sysgine-framework-bom</artifactId>
-				<version>${sysgine.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
 		<!-- Kotlin -->
 
