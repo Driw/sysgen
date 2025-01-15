@@ -16,9 +16,9 @@ Specify the maven import as the following example on your [pom.xml](https://mave
 
 ```xml
 <dependency>
-    <groupId>br.com.driw</groupId>
-    <artifactId>sysgine-framework-{MODULE_NAME}</artifactId>
-    <version>0.1.0-ALPHA</version>
+	<groupId>br.com.driw</groupId>
+	<artifactId>sysgine-framework-{MODULE_NAME}</artifactId>
+	<version>0.1.0-ALPHA</version>
 </dependency>
 ```
 

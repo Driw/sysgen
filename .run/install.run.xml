@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="install sysgine-framework-bom " type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="install" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -12,12 +12,8 @@
           <option name="goals">
             <list>
               <option value="clean" />
-              <option value="validate" />
-              <option value="compile" />
-              <option value="test" />
-              <option value="package" />
-              <option value="verify" />
               <option value="install" />
+              <option value="-U" />
             </list>
           </option>
           <option name="multimoduleDir" />
@@ -29,7 +25,7 @@
             <list />
           </option>
           <option name="resolveToWorkspace" value="false" />
-          <option name="workingDirPath" value="$PROJECT_DIR$/sysgine-framework-bom" />
+          <option name="workingDirPath" value="$PROJECT_DIR$" />
         </MavenRunnerParameters>
       </option>
     </MavenSettings>

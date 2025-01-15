@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="All in sysgine-framework-reflection" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-    <module name="sysgine-framework-reflection" />
+  <configuration default="false" name="All in sysgine-framework-context" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="sysgine-framework-context" />
     <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
       <option name="credential" />
       <option name="region" />
