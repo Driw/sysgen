@@ -16,36 +16,32 @@ Specify the maven import as the following example on your [pom.xml](https://mave
 
 ```xml
 <dependency>
-	<groupId>br.com.driw</groupId>
+	<groupId>br.com.driw.sysgine</groupId>
 	<artifactId>sysgine-framework-{MODULE_NAME}</artifactId>
 	<version>0.1.0-ALPHA</version>
 </dependency>
 ```
 
-1. You can use any module with maven without any repository, but will ned install them
+1. Alternatively you could install locally using maven and the repo source code, starting installing the BOM module 
+enabling the build of framework modules, following as inside BOM project:
 
-``mvn clean validate compile test package verify install --projects
-sysgine-framework-application,
-sysgine-framework-configurator,
+``mvn clean install``
+
+2. After that the BOM module will be generated and installed locally in your maven repository, now you can install the framework modules because they use this BOM module to centralize some dependencies and your versions. Different of BOM module, the framework could be installed isolated, so you can install all modules or specify what modules you want.
+
+**NOTE**: *Both alternatives should be executed on root path of this project.*
+
+#### Install all modules
+``mvn clean install``
+
+#### Install only specific modules
+``mvn clean install --projects
+sysgine-framework-test,
+sysgine-framework-common,
 sysgine-framework-context,
-sysgine-framework-service,
-sysgine-framework-stream,
-sysgine-framework-logger,
-sysgine-framework-utils``
+sysgine-framework-reflection``
 
-It's possible install specific modules, but that is the main modules, anyone else not listed on item 2 it's useful by the modules listed up.
-
-2. Choose one or more modules:
-
-- Application - ``sysgine-framework-application``
-- Configurator - ``sysgine-framework-configurator``
-- Context - ``sysgine-framework-context``
-- Service - ``sysgine-framework-service``
-- Stream - ``sysgine-framework-stream``
-- Logger - ``sysgine-framework-logger``
-- Utils - ``sysgine-framework-utils``
-
-2. Look out the modules README to understand more about it one.
+3. Look out the modules README to understand more about it one.
 
 ## Running the tests
 
@@ -59,7 +55,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Andrew Mello da Silva** - *Developer* - [Driw](https://github.com/Driw)
+* **Andrew Mello da Silva** - *Software Engineer* - [Driw](https://github.com/Driw)
 
 ## License
 
